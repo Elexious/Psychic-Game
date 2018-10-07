@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+        <div class="jumbotron">
+                <h1 class="display-4">Psychic Assessment Game</h1>
+                <hr class="my-4">
+              </div>
+    <h1>Press a letter to guess which letter the computer is thinking about.</h1>
+    <p id="wins">Your psychic level</p>
+    <p id="overtag"></p>
+    <script type="text/javascript">
+
+//Computer behavior
+    var choices =  ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    var randomIndex = Math.floor(Math.random() * choices.length);
+    var computerChoice = choices[randomIndex];
+
+    var wins = 0;
+    var guesslimit = 0; 
+        
+    // document.getElementById("computer") = function(){ 
+
+    // };
+        
+//Human behavior
+    document.onkeyup = function(event) {
+        var userInput = event.key.toUpperCase();
+
+        console.log("Computer: " + computerChoice + " | User: " + userInput);
+        console.log(event);
+
+        if (userInput == computerChoice){
+            alert("You won!");
+            wins++;
+            console.log("Wins: " + wins);
+        }
+        else {
+            alert("You aren't very psychic");
+        }
+
+//game results
+
+        function guessing(){
+            if (guesslimit <= (10)) {
+                document.querySelector("#wins").innerHTML = wins[guesslimit].q;
+            }
+            else {
+                document.querySelector("#overtag").innerHTML = "Game Over. Here are your final results"
+            }
+        }
+    }
+    </script>
+</body>
+</html>
